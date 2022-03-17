@@ -1,22 +1,26 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { Grid, Typography } from '@mui/material';
 
-import { Router } from './Router';
-import { store, persistor } from './store';
+import { Router } from './routes';
+import { store } from './store';
 
 function App() {
-  return (
-    <React.Fragment>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <Router>
-            <h1>Hello World</h1>
-          </Router>
-        </PersistGate>
-      </Provider>
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <Grid
+                container
+                sdirection="row"
+                justifyContent="space-around"
+                alignItems="center"
+            >
+                <Typography variant="h4">Personagens Marvel</Typography>
+                <Provider store={store}>
+                    <Router></Router>
+                </Provider>
+            </Grid>
+        </React.Fragment>
+    );
 }
 
 export default App;

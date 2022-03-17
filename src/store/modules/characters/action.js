@@ -10,6 +10,6 @@ export const fetchCharacters = () => {
 export const updateCharacter = (payload) => {
     return {
         type: 'character/UPDATE',
-        payload
+        payload,
     };
 };

@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import { useDispatch, useSelector } from 'react-redux';
+// import { getCharacters } from '../services/marvel';
+import { fetchCharacters } from '../store/modules/characters/action';
 
 export const Home = () => {
+    const character = useSelector((state) => state.character);
+    const dispatch = useDispatch();
+
+    useEffect(async () => {
+        dispatch(fetchCharacters());
+    }, []);
+
     return (
         <React.Fragment>
             <Grid
@@ -24,10 +34,10 @@ export const Home = () => {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            {character.name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles
+                            {character.description}
                         </Typography>
                     </CardContent>
                     <CardActions>

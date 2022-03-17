@@ -1,4 +1,5 @@
-import { getCharacters } from '../../../services/characters';
+import { getCharacters } from '../../../services/marvel';
+
 export const fetchCharacters = () => {
     return (dispatch) => {
         getCharacters().then((data) => {
